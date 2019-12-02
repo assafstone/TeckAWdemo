@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AdventureWorks2016", "AdventureWorks2016\AdventureWorks2016.sqlproj", "{323C80D7-FAFB-4053-941C-4CBAEDC37A12}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{323C80D7-FAFB-4053-941C-4CBAEDC37A12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{323C80D7-FAFB-4053-941C-4CBAEDC37A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{323C80D7-FAFB-4053-941C-4CBAEDC37A12}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{323C80D7-FAFB-4053-941C-4CBAEDC37A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{323C80D7-FAFB-4053-941C-4CBAEDC37A12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{323C80D7-FAFB-4053-941C-4CBAEDC37A12}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1DBA2FA3-4E69-4D1E-B542-55CEC0EB344C}
+	EndGlobalSection
+EndGlobal
