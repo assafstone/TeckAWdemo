@@ -36,10 +36,10 @@ stages:
           inputs:
             SourceFolder: '$(Build.SourcesDirectory)'
             Contents: '**/*.dacpac'
-            TargetFolder: '$(Build.ArtifactStagingDirectory)/database'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)'
         - task: PublishBuildArtifacts@1
           inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)/database'
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
             ArtifactName: 'database'
             publishLocation: 'Container'
             
@@ -65,5 +65,5 @@ stages:
                   SqlPassword: 'AWDBP@ssw0rd!'
                   deployType: 'DacpacTask'
                   DeploymentAction: 'Publish'
-                  DacpacFile: '$(Agent.releaseDirectory)/database/AdventureWorks2016.dacpac'
+                  DacpacFile: '$(Pipeline.Workspace)/database/AdventureWorks2016.dacpac'
                   IpDetectionMethod: 'AutoDetect'
