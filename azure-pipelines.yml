@@ -40,12 +40,12 @@ stages:
             SourceFolder: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)'
             Contents: '**/*.dacpac'
             TargetFolder: '$(Build.ArtifactStagingDirectory)/database'
-        - task: PublishBuildArtifacts@1
+        - task: PublishPipelineArtifact@1
           inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)/database'
-            ArtifactName: 'database'
-            publishLocation: 'Container'
-            
+            targetPath: '$(Build.ArtifactStagingDirectory)/database'
+            artifact: 'database'
+            publishLocation: 'pipeline'
+
   - stage: Deployments
     displayName: Deploy artifacts to Azure
     jobs:
@@ -53,6 +53,7 @@ stages:
         displayName: Deploy database schema changes to Azure
         pool:
           vmImage: 'windows-latest'
+        dependsOn: Build
         environment: 'dev'
         strategy:
           runOnce:
