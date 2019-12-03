@@ -6,6 +6,9 @@
 trigger:
 - master
 
+variables:
+  System.Debug: true
+  
 stages:
   - stage: Builds
     displayName: Build artifacts to be deployed
