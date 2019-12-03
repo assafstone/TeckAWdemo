@@ -69,5 +69,4 @@ stages:
                   deployType: 'DacpacTask'
                   DeploymentAction: 'Publish'
                   DacpacFile: '$(Pipeline.Workspace)/database/AdventureWorks2016.dacpac'
-                  AdditionalArguments: '/p:BlockOnPossibleDataLoss=false'
                   IpDetectionMethod: 'AutoDetect'
