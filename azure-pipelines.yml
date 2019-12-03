@@ -32,6 +32,16 @@ stages:
           inputs:
             platform: '$(buildPlatform)'
             configuration: '$(buildConfiguration)'
+        - task: CopyFiles@2
+          inputs:
+            SourceFolder: '$(Build.SourcesDirectory)'
+            Contents: '**/*.dacpac'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)/database'
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)/database'
+            ArtifactName: 'database'
+            publishLocation: 'Container'
             
   - stage: Deployments
     displayName: Deploy artifacts to Azure
@@ -55,4 +65,5 @@ stages:
                   SqlPassword: 'AWDBP@ssw0rd!'
                   deployType: 'DacpacTask'
                   DeploymentAction: 'Publish'
+                  DacpacFile: '$(Agent.releaseDirectory)/AdventureWorks2016.dacpac'
                   IpDetectionMethod: 'AutoDetect'
