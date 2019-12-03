@@ -34,12 +34,12 @@ stages:
             configuration: '$(buildConfiguration)'
         - task: CopyFiles@2
           inputs:
-            SourceFolder: '$(Build.SourcesDirectory)'
+            SourceFolder: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/Release'
             Contents: '**/*.dacpac'
-            TargetFolder: '$(Build.ArtifactStagingDirectory)'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)database'
         - task: PublishBuildArtifacts@1
           inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)/database'
             ArtifactName: 'database'
             publishLocation: 'Container'
             
