@@ -284,4 +284,9 @@
     <Build Include="Sales\XMLSchemaCollections\StoreSurveySchemaCollection.sql" />
     <Build Include="ExtendedProperties.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="AdventureWorks2016.publish.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
