@@ -38,7 +38,9 @@ stages:
         - task: CopyFiles@2
           inputs:
             SourceFolder: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)'
-            Contents: '**/*.dacpac'
+            Contents: |
+              **/*.dacpac
+              **/*.publish.xml
             TargetFolder: '$(Build.ArtifactStagingDirectory)/database'
         - task: PublishPipelineArtifact@1
           inputs:
@@ -69,4 +71,5 @@ stages:
                   deployType: 'DacpacTask'
                   DeploymentAction: 'Publish'
                   DacpacFile: '$(Pipeline.Workspace)/database/AdventureWorks2016.dacpac'
+                  PublishProfile: '$(Pipeline.Workspace)/database/AdventureWorks2016.publish.xml'
                   IpDetectionMethod: 'AutoDetect'
