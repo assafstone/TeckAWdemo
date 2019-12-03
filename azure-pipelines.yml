@@ -65,5 +65,5 @@ stages:
                   SqlPassword: 'AWDBP@ssw0rd!'
                   deployType: 'DacpacTask'
                   DeploymentAction: 'Publish'
-                  DacpacFile: '$(Agent.releaseDirectory)/AdventureWorks2016.dacpac'
+                  DacpacFile: '$(Agent.releaseDirectory)/database/AdventureWorks2016.dacpac'
                   IpDetectionMethod: 'AutoDetect'
