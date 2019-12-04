@@ -18,11 +18,7 @@ Describe "Upgrade database schema" {
 
             $found | Should -BeNullOrEmpty
         }
-    }
-}
 
-Describe "Upgrade database schema" {
-    Context "The SQL schema upgrade script" {
         It "doesn't alter columns" {
             $found = Get-SqlSchemaLines | Select-String -Pattern $ALTER_COLUMNS_EXPRESSION
 
