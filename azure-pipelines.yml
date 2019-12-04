@@ -70,7 +70,7 @@ stages:
         - task: CopyFiles@2
           displayName: 'Copy diff script'
           inputs:
-            SourceFolder: '$(PathToSql)'
+            SourceFolder: '$(Build.SourcesDirectory)/GeneratedOutputFiles'
             Contents: |
               **/*.sql
             TargetFolder: '$(Build.ArtifactStagingDirectory)/database'
