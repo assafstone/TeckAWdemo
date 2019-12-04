@@ -60,11 +60,19 @@ stages:
             testResultsFormat: NUnit
             
         - task: CopyFiles@2
+          displayName: 'Copy dacpac files'
           inputs:
             SourceFolder: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)'
             Contents: |
               **/*.dacpac
               **/*.publish.xml
+            TargetFolder: '$(Build.ArtifactStagingDirectory)/database'
+        - task: CopyFiles@2
+          displayName: 'Copy diff script'
+          inputs:
+            SourceFolder: '$(PathToSql)'
+            Contents: |
+              **/*.sql
             TargetFolder: '$(Build.ArtifactStagingDirectory)/database'
         - task: PublishPipelineArtifact@1
           inputs:
