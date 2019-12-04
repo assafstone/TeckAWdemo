@@ -7,7 +7,8 @@ trigger:
 - master
 
 variables:
-  System.Debug: true
+  System.Debug: false
+  PathToSql: '$(Build.SourcesDirectory)/GeneratedOutputFiles/AdventureWorks2016_Script.sql'
   
 stages:
   - stage: Builds
@@ -46,8 +47,9 @@ stages:
             PublishProfile: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/AdventureWorks2016.publish.xml'
             IpDetectionMethod: 'AutoDetect'
         - task: Pester@8
+          displayName: 'Trust but verify'
           inputs:
-            scriptFolder: '$(Build.SourcesDirectory)/GeneratedOutputFiles/AdventureWorks2016_Script.sql'
+            scriptFolder: '$(Build.SourcesDirectory)/tests/Schema-Tests.ps1'
             resultsFile: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/Test-Pester.XML'
             run32Bit: False
         - task: PublishTestResults@2
