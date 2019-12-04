@@ -3,7 +3,7 @@
     [StateProvinceCode]       NCHAR (3)        NOT NULL,
     [CountryRegionCode]       NVARCHAR (3)     NOT NULL,
     [IsOnlyStateProvinceFlag] [dbo].[Flag]     CONSTRAINT [DF_StateProvince_IsOnlyStateProvinceFlag] DEFAULT ((1)) NOT NULL,
-    [Name]                    [dbo].[Name]     NOT NULL DEFAULT 'BC',
+    [Name]                    [dbo].[Name]     NOT NULL,
     [TerritoryID]             INT              NOT NULL,
     [rowguid]                 UNIQUEIDENTIFIER CONSTRAINT [DF_StateProvince_rowguid] DEFAULT (newid()) ROWGUIDCOL NOT NULL,
     [ModifiedDate]            DATETIME         CONSTRAINT [DF_StateProvince_ModifiedDate] DEFAULT (getdate()) NOT NULL,
@@ -11,6 +11,8 @@
     CONSTRAINT [FK_StateProvince_CountryRegion_CountryRegionCode] FOREIGN KEY ([CountryRegionCode]) REFERENCES [Person].[CountryRegion] ([CountryRegionCode]),
     CONSTRAINT [FK_StateProvince_SalesTerritory_TerritoryID] FOREIGN KEY ([TerritoryID]) REFERENCES [Sales].[SalesTerritory] ([TerritoryID])
 );
+
+
 
 
 GO

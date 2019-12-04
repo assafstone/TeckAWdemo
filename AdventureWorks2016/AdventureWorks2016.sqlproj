@@ -283,10 +283,14 @@
     <Build Include="Production\XMLSchemaCollections\ProductDescriptionSchemaCollection.sql" />
     <Build Include="Sales\XMLSchemaCollections\StoreSurveySchemaCollection.sql" />
     <Build Include="ExtendedProperties.sql" />
+    <Build Include="Person\Views\vAddressUpdates.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AdventureWorks2016.publish.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="AdventureWorks2016.refactorlog" />
   </ItemGroup>
 </Project>
