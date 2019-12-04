@@ -6,8 +6,8 @@ if (!$Env:PathToSql) {
     $Env:PathToSql = 'C:\Users\assaf\source\repos\demos\DatabaseDevOps\AdventureWorks2016\AdventureWorks2016\bin\Debug\AdventureWorks2016_Update4.publish.sql'
 }
 
-$DROP_COLUMNS_EXPRESSION = 'ALTER\s+TABLE.+?DROP\s+\['
-$ALTER_COLUMNS_EXPRESSION = 'ALTER\s+TABLE.+?ALTER\s+\['
+$DROP_COLUMNS_EXPRESSION = '(ALTER\s+TABLE.+?DROP\s+\[|ALTER\s+TABLE.+?DROP\s+COLUMN)'
+$ALTER_COLUMNS_EXPRESSION = '(ALTER\s+TABLE.+?ALTER\s+\[|ALTER\s+TABLE.+?ALTER\s+COLUMN)'
 $Lines = Get-SqlSchemaLines
 Write-Host "Lines: $Lines"
 
