@@ -7,7 +7,8 @@ trigger:
 - master
 
 variables:
-  System.Debug: true
+  System.Debug: false
+  PathToSql: '$(Build.SourcesDirectory)/GeneratedOutputFiles/AdventureWorks2016_Script.sql'
   
 stages:
   - stage: Builds
@@ -44,11 +45,11 @@ stages:
             DeploymentAction: 'Script'
             DacpacFile: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/AdventureWorks2016.dacpac'
             PublishProfile: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/AdventureWorks2016.publish.xml'
-            AdditionalArguments: '/DeployScriptPath:$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/AW-diff-script.sql'
             IpDetectionMethod: 'AutoDetect'
         - task: Pester@8
+          displayName: 'Trust but verify'
           inputs:
-            scriptFolder: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/AW-diff-script.sql'
+            scriptFolder: '$(Build.SourcesDirectory)/tests/Schema-Tests.ps1'
             resultsFile: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/Test-Pester.XML'
             run32Bit: False
         - task: PublishTestResults@2
@@ -59,11 +60,19 @@ stages:
             testResultsFormat: NUnit
             
         - task: CopyFiles@2
+          displayName: 'Copy dacpac files'
           inputs:
             SourceFolder: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)'
             Contents: |
               **/*.dacpac
               **/*.publish.xml
+            TargetFolder: '$(Build.ArtifactStagingDirectory)/database'
+        - task: CopyFiles@2
+          displayName: 'Copy diff script'
+          inputs:
+            SourceFolder: '$(PathToSql)'
+            Contents: |
+              **/*.sql
             TargetFolder: '$(Build.ArtifactStagingDirectory)/database'
         - task: PublishPipelineArtifact@1
           inputs:
