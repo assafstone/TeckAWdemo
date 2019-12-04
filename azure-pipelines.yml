@@ -44,11 +44,10 @@ stages:
             DeploymentAction: 'Script'
             DacpacFile: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/AdventureWorks2016.dacpac'
             PublishProfile: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/AdventureWorks2016.publish.xml'
-            AdditionalArguments: '/DeployScriptPath:$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/AW-diff-script.sql'
             IpDetectionMethod: 'AutoDetect'
         - task: Pester@8
           inputs:
-            scriptFolder: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/AW-diff-script.sql'
+            scriptFolder: '$(Build.SourcesDirectory)/GeneratedOutputFiles/AdventureWorks2016_Script.sql'
             resultsFile: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/Test-Pester.XML'
             run32Bit: False
         - task: PublishTestResults@2
