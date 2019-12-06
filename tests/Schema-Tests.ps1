@@ -1,5 +1,5 @@
 function Get-SqlSchemaLines {
-    (Get-ChildItem -Path $Env:PathToSql | Get-Content -Raw).Replace("`r`n", ' ').Split("GO")
+    (Get-ChildItem -Path $Env:PathToSql | Get-Content -Raw).Replace("`r`n", ' ').Split(@("GO"), [System.StringSplitOptions]::RemoveEmptyEntries)
 }
 
 if (!$Env:PathToSql) {
@@ -7,7 +7,7 @@ if (!$Env:PathToSql) {
 }
 Write-Host "Path to SQL: $Env:PathToSql"
 Write-Host "The file"
-cat $Env:PathToSql
+Get-Content $Env:PathToSql
 
 $DROP_COLUMNS_EXPRESSION = '(ALTER\s+TABLE.+?DROP\s+\[|ALTER\s+TABLE.+?DROP\s+COLUMN)'
 $ALTER_COLUMNS_EXPRESSION = '(ALTER\s+TABLE.+?ALTER\s+\[|ALTER\s+TABLE.+?ALTER\s+COLUMN)'
