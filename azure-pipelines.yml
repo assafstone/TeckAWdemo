@@ -53,6 +53,7 @@ stages:
             resultsFile: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/Test-Pester.XML'
             run32Bit: False
         - task: PublishTestResults@2
+          condition: always()
           inputs:
             buildConfiguration: '$(buildConfiguration)'
             buildPlatform: '$(buildPlatform)'
