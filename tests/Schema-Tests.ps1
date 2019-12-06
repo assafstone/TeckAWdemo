@@ -6,6 +6,8 @@ if (!$Env:PathToSql) {
     $Env:PathToSql = 'C:\Users\assaf\source\repos\demos\DatabaseDevOps\AdventureWorks2016\AdventureWorks2016\bin\Debug\AdventureWorks2016_Update4.publish.sql'
 }
 Write-Host "Path to SQL: $Env:PathToSql"
+Write-Host "The file"
+cat $Env:PathToSql
 
 $DROP_COLUMNS_EXPRESSION = '(ALTER\s+TABLE.+?DROP\s+\[|ALTER\s+TABLE.+?DROP\s+COLUMN)'
 $ALTER_COLUMNS_EXPRESSION = '(ALTER\s+TABLE.+?ALTER\s+\[|ALTER\s+TABLE.+?ALTER\s+COLUMN)'
