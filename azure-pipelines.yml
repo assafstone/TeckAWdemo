@@ -60,7 +60,7 @@ stages:
               }
         - task: Pester@8
           displayName: 'Trust but verify'
-          continueOnError: $(ContinueOnFailedTest)
+          continueOnError: true
           inputs:
             scriptFolder: '$(Build.SourcesDirectory)/tests/Test-SqlScripts.ps1'
             resultsFile: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/Test-Pester.XML'
