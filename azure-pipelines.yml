@@ -18,7 +18,6 @@ stages:
       solution: '**/*.sln'
       buildPlatform: 'Any CPU'
       buildConfiguration: 'Release'
-      ContinueOnFailedTest: true
 
     jobs:
       - job: BuildDotNetDesktop
