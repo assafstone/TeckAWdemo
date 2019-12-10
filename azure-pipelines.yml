@@ -9,6 +9,7 @@ trigger:
 variables:
   System.Debug: false
   PathToSql: '$(Build.SourcesDirectory)/GeneratedOutputFiles/AdventureWorks2016_Script.sql'
+  PathToScriptDomLibrary: '$(Build.SourcesDirectory)/Tools/Microsoft.SqlServer.TransactSql.ScriptDom.dll'
   
 stages:
   - stage: Builds
