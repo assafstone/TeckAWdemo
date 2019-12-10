@@ -6,7 +6,7 @@
     [FirstName]             [dbo].[Name]                                                  NOT NULL,
     [MiddleName]            [dbo].[Name]                                                  NULL,
     [LastName]              [dbo].[Name]                                                  NOT NULL,
-    [Suffix]                NVARCHAR (10)                                                 NULL,
+    [Suffix]                NVARCHAR (15)                                                 NULL,
     [EmailPromotion]        INT                                                           CONSTRAINT [DF_Person_EmailPromotion] DEFAULT ((0)) NOT NULL,
     [AdditionalContactInfo] XML(CONTENT [Person].[AdditionalContactInfoSchemaCollection]) NULL,
     [Demographics]          XML(CONTENT [Person].[IndividualSurveySchemaCollection])      NULL,
