@@ -8,8 +8,8 @@ $verifcationTests = @{
 }
 
 Describe "When migrating SQL schema changes to the database" {
-    Import-Module .\Modules\SqlScriptParser\Get-SqlServerDomParserKeys.psm1
-    Import-Module .\Modules\SqlScriptParser\Invoke-SqlScriptParser.psm1
+    Import-Module $PSScriptRoot/Modules/SqlScriptParser/Get-SqlServerDomParserKeys.psm1
+    Import-Module $PSScriptRoot/Modules/SqlScriptParser/Invoke-SqlScriptParser.psm1
     
     Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
     Install-Module -Name Assert -Scope CurrentUser -SkipPublisherCheck
