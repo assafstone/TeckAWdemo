@@ -18,6 +18,8 @@ stages:
       solution: '**/*.sln'
       buildPlatform: 'Any CPU'
       buildConfiguration: 'Release'
+      ContinueOnFailedTest: true
+
     jobs:
       - job: BuildDotNetDesktop
         displayName: Build the database scehma's dacpac
@@ -48,13 +50,18 @@ stages:
             PublishProfile: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/AdventureWorks2016.publish.xml'
             IpDetectionMethod: 'AutoDetect'
         - task: PowerShell@2
+          displayName: 'Display the schema migration script(s) for diagnostics'
           inputs:
             targetType: 'inline'
             script: |
-              Write-Host "Migration Script"
-              Get-ChildItem $(Build.SourcesDirectory)/GeneratedOutputFiles/*.sql | Get-Content
+              Write-Host "Migration Scripts"
+              Get-ChildItem $(Build.SourcesDirectory)/GeneratedOutputFiles/*.sql | Foreach-Object { 
+                Write-Host "*** File: $($_.FullName) ***"
+                Get-Content -Path $_
+              }
         - task: Pester@8
           displayName: 'Trust but verify'
+          continueOnError: $(ContinueOnFailedTest)
           inputs:
             scriptFolder: '$(Build.SourcesDirectory)/tests/Test-SqlScripts.ps1'
             resultsFile: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/Test-Pester.XML'
