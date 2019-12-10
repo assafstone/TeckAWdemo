@@ -30,8 +30,8 @@ Describe "When migrating SQL schema changes to the database" {
         $found.Count | Assert-Equal -Expected 0 -CustomMessage $customMessage
     }
 
-    if (!$Env:Files) {
-        $Env:Files = $null
+    if (!$Env:PathToSql) {
+        $Env:PathToSql = $null
     }
     if (!$Env:PathToScriptDomLibrary) {
         $Env:PathToScriptDomLibrary = $null
@@ -39,9 +39,9 @@ Describe "When migrating SQL schema changes to the database" {
     if (!$Env:UseQuotedIdentifier) {
         $Env:UseQuotedIdentifier = $null
     }
-    Write-Host "Files: $env:Files"
+    Write-Host "Files: $Env:PathToSql"
 
-    $results = (Get-ChildItem $Env:Files) | Invoke-SqlScriptParser `
+    $results = (Get-ChildItem $Env:PathToSql) | Invoke-SqlScriptParser `
         -PathToScriptDomLibrary $Env:PathToScriptDomLibrary `
         -UseQuotedIdentifier $Env:UseQuotedIdentifier
 

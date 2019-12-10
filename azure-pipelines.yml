@@ -49,7 +49,7 @@ stages:
         - task: Pester@8
           displayName: 'Trust but verify'
           inputs:
-            scriptFolder: '$(Build.SourcesDirectory)/tests/Schema-Tests.ps1'
+            scriptFolder: '$(Build.SourcesDirectory)/tests/Test-SqlScripts.ps1'
             resultsFile: '$(Build.SourcesDirectory)/AdventureWorks2016/bin/$(buildConfiguration)/Test-Pester.XML'
             run32Bit: False
         - task: PublishTestResults@2
